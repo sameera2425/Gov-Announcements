@@ -154,7 +154,7 @@
             display: flex;
             background: var(--white);
             border: 1px solid #e0e0e0;
-            border-radius: 12px;
+            border-radius: 0;
             max-width: 500px;
             margin: 0 auto;
             align-items: center;
@@ -226,7 +226,7 @@
         .filter-grid-item i {
             font-size: 2rem;
             margin-bottom: 0.5rem;
-            color: var(--primary-green);
+            color: var(--text-light);
             transition: color 0.2s;
         }
         .filter-grid-item.active i, .filter-grid-item:hover i {
@@ -236,7 +236,7 @@
             font-size: 1.08rem;
             font-weight: 600;
             text-align: center;
-            color: var(--primary-green);
+            color: var(--text-light);
             transition: color 0.2s;
         }
         .filter-grid-item.active .filter-grid-label, .filter-grid-item:hover .filter-grid-label {
@@ -322,8 +322,12 @@
         .all-announcements-section {
             background: #f7f9fb;
             border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(38,77,59,0.07);
             padding: 2rem 1.5rem 2.5rem 1.5rem;
             margin-bottom: 2.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .all-announcements-title {
             font-size: 1.25rem;
@@ -402,6 +406,27 @@
             font-size: 0.99rem;
             margin-bottom: 0.7rem;
         }
+        .card-topics {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .card-topics i {
+            font-size: 1.1rem;
+            color: var(--primary-green);
+            background: var(--secondary-green);
+            padding: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .card-topics i:hover {
+            background: var(--primary-green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
         .all-announcement-card .card-footer {
             display: flex;
             justify-content: space-between;
@@ -460,7 +485,7 @@
         .filters-title {
             font-size: 1.1rem;
             font-weight: 400;
-            color: var(--primary-green);
+            color: var(--text-light);
             margin-bottom: 1.5rem;
             position: relative;
         }
@@ -518,14 +543,14 @@
             flex-wrap: wrap;
         }
         .filter-dropdown {
-            background: #f7f9fb;
-            border: 1.5px solid #c3e6cb;
+            background: #fff;
+            border: 2px solid var(--secondary-green);
             border-radius: 10px;
-            padding: 0.6rem 1.5rem;
+            padding: 0.7rem 1.5rem;
             font-size: 1.08rem;
-            color: var(--primary-green);
+            color: var(--text-light);
             box-shadow: 0 2px 8px rgba(38,77,59,0.06);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
             outline: none;
             appearance: none;
             cursor: pointer;
@@ -533,6 +558,7 @@
         .filter-dropdown:focus, .filter-dropdown:hover {
             border-color: var(--primary-green);
             box-shadow: 0 4px 16px rgba(38,77,59,0.10);
+            transform: translateY(-2px);
         }
         .filter-dropdown::-ms-expand {
             display: none;
@@ -544,14 +570,14 @@
             background-size: 1.2em;
         }
         .filter-date-picker {
-            background: #f7f9fb;
-            border: 1.5px solid #c3e6cb;
+            background: #fff;
+            border: 2px solid var(--secondary-green);
             border-radius: 10px;
-            padding: 0.6rem 1.5rem;
+            padding: 0.7rem 1.5rem;
             font-size: 1.08rem;
-            color: var(--primary-green);
+            color: var(--text-light);
             box-shadow: 0 2px 8px rgba(38,77,59,0.06);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
             outline: none;
             cursor: pointer;
         }
@@ -723,6 +749,9 @@
             box-shadow: 0 4px 24px rgba(38,77,59,0.07);
             padding: 2rem 1.5rem 2.5rem 1.5rem;
             margin-bottom: 2.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .continue-reading-title {
             font-size: 1.25rem;
@@ -740,10 +769,24 @@
             border-radius: 2px;
             margin-top: 0.3rem;
         }
+        .continue-reading-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
         .continue-reading-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
             gap: 1.2rem;
+            padding-bottom: 1.5rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .continue-reading-row::-webkit-scrollbar {
+            display: none;
         }
         .continue-reading-card {
             background: #fff;
@@ -783,11 +826,41 @@
             font-weight: 600;
             cursor: pointer;
             align-self: flex-start;
+            margin-top: auto;
             transition: background 0.2s, transform 0.2s;
         }
         .continue-reading-card .cr-btn:hover {
             background: #183324;
             transform: translateY(-2px) scale(1.04);
+        }
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(74, 123, 90, 0.7);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, opacity 0.2s;
+            opacity: 0.8;
+        }
+        .scroll-arrow:hover {
+            background: var(--primary-green);
+            opacity: 1;
+        }
+        .scroll-arrow.left {
+            left: 0;
+        }
+        .scroll-arrow.right {
+            right: 0;
         }
         /* Carousel Styles */
         .news-carousel {
@@ -844,6 +917,7 @@
             font-weight: 700;
             margin-bottom: 0.5rem;
             text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            text-decoration: underline;
         }
         .carousel-summary {
             font-size: 1.08rem;
@@ -1023,14 +1097,14 @@
         }
         .news-carousel-row > .top-stories {
             border-left: 2px solid #e0e0e0;
-            margin-left: 0.5rem;
+            margin-left: 2rem;
         }
         @media (max-width: 1100px) {
             .news-carousel-row {
                 gap: 0.5rem;
             }
             .news-carousel-row > .top-stories {
-                margin-left: 0.5rem;
+                margin-left: 2rem;
             }
         }
         @media (max-width: 900px) {
@@ -1043,6 +1117,160 @@
                 margin-left: 0;
                 border-top: 2px solid #e0e0e0;
                 margin-top: 1.5rem;
+            }
+        }
+        /* New topic labels style */
+        .card-topic-labels {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .card-topic-label {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px; /* Pill shape */
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            background-color: rgba(224, 224, 224, 0.3);
+        }
+        .card-topic-label.scholarship {
+            background-color: transparent;
+            color: var(--primary-green);
+        }
+        .card-topic-label.student {
+            background-color: transparent;
+            color: var(--primary-green);
+        }
+        .card-topic-label.important {
+            background-color: transparent;
+            color: var(--primary-green);
+        }
+        /* Add more topic classes as needed */
+        .card-topic-label.health {
+            background-color: transparent;
+            color: var(--primary-green);
+        }
+        .card-topic-label.jobs {
+            background-color: transparent;
+            color: var(--primary-green);
+        }
+        .card-topic-label.transport {
+            background-color: transparent;
+            color: var(--primary-green);
+        }
+        .card-topic-label.finance {
+            background-color: transparent;
+            color: var(--primary-green);
+        }
+        .all-announcement-card .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.7rem;
+            font-size: 0.97rem;
+            color: var(--text-light);
+        }
+        .site-footer {
+            background-color: var(--dark-blue);
+            color: var(--light-grey);
+            padding: 40px 20px;
+            font-size: 1rem;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        .footer-section {
+            flex: 1 1 200px;
+            margin-bottom: 20px;
+        }
+        .footer-section h4 {
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 50px;
+            background-color: var(--primary-orange);
+        }
+        .footer-section p,
+        .footer-section ul {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li a {
+            color: var(--light-grey);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: var(--primary-orange);
+        }
+        .footer-section .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: var(--light-grey);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .footer-section .social-icons a:hover {
+            color: var(--primary-orange);
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        .footer-bottom div {
+            margin-bottom: 5px;
+        }
+        .footer-bottom .sitemap-link a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-bottom .sitemap-link a:hover {
+            color: var(--primary-orange);
+        }
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-section {
+                flex: none;
+                width: 100%;
+            }
+            .footer-section h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-section .social-icons {
+                justify-content: center;
+            }
+            .social-media .social-icons {
+                text-align: center;
             }
         }
     </style>
@@ -1200,23 +1428,27 @@
             </div>
         </section>
         <section class="continue-reading-section">
-            <div class="continue-reading-title">Continue Reading</div>
-            <div class="continue-reading-row">
-                <div class="continue-reading-card">
-                    <div class="cr-title">How to Apply for Government Scholarships</div>
-                    <div class="cr-desc">A step-by-step guide to help students apply for the latest government scholarships available in 2025.</div>
-                    <button class="cr-btn">Continue</button>
+            <div class="continue-reading-container">
+                <div class="continue-reading-title">Continue Reading</div>
+                <div class="continue-reading-row">
+                    <div class="continue-reading-card">
+                        <div class="cr-title">How to Apply for Government Scholarships</div>
+                        <div class="cr-desc">A step-by-step guide to help students apply for the latest government scholarships available in 2025.</div>
+                        <button class="cr-btn">Continue</button>
+                    </div>
+                    <div class="continue-reading-card">
+                        <div class="cr-title">Healthcare Benefits for Senior Citizens</div>
+                        <div class="cr-desc">Explore the new healthcare schemes and benefits introduced for senior citizens across the country.</div>
+                        <button class="cr-btn">Continue</button>
+                    </div>
+                    <div class="continue-reading-card">
+                        <div class="cr-title">Upcoming Job Fairs in Your City</div>
+                        <div class="cr-desc">Find out when and where the next government-sponsored job fairs are happening near you.</div>
+                        <button class="cr-btn">Continue</button>
+                    </div>
                 </div>
-                <div class="continue-reading-card">
-                    <div class="cr-title">Healthcare Benefits for Senior Citizens</div>
-                    <div class="cr-desc">Explore the new healthcare schemes and benefits introduced for senior citizens across the country.</div>
-                    <button class="cr-btn">Continue</button>
-                </div>
-                <div class="continue-reading-card">
-                    <div class="cr-title">Upcoming Job Fairs in Your City</div>
-                    <div class="cr-desc">Find out when and where the next government-sponsored job fairs are happening near you.</div>
-                    <button class="cr-btn">Continue</button>
-                </div>
+                <button class="scroll-arrow left"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
         <section class="all-announcements-section">
@@ -1227,6 +1459,11 @@
                     <div class="card-label"><i class="fas fa-graduation-cap"></i> Ministry of Education</div>
                     <div class="card-title">New Education Scholarship for Rural Students</div>
                     <div class="card-desc">Students from rural areas can now apply for a new scholarship program that covers tuition fees and provides a monthly stipend. Applications...</div>
+                    <div class="card-topic-labels">
+                        <span class="card-topic-label scholarship">Scholarship</span>
+                        <span class="card-topic-label student">Student</span>
+                        <span class="card-topic-label important">Important</span>
+                    </div>
                     <div class="card-footer">
                         <span>May 15, 2025</span>
                         <span class="card-link">View Details</span>
@@ -1236,6 +1473,10 @@
                     <div class="card-label"><i class="fas fa-heartbeat"></i> Ministry of Health</div>
                     <div class="card-title">Healthcare Centers Extended Hours</div>
                     <div class="card-desc">All government healthcare centers will now operate from 8AM to 10PM every day to improve accessibility. This change is effective...</div>
+                    <div class="card-topic-labels">
+                        <span class="card-topic-label health">Health</span>
+                        <span class="card-topic-label important">Important</span>
+                    </div>
                     <div class="card-footer">
                         <span>May 14, 2025</span>
                         <span class="card-link">View Details</span>
@@ -1245,6 +1486,10 @@
                     <div class="card-label"><i class="fas fa-briefcase"></i> Ministry of Labor and Employment</div>
                     <div class="card-title">New Job Fair in Chennai and Mumbai</div>
                     <div class="card-desc">Job fairs will be held in Chennai and Mumbai to connect job seekers with employers. Bring your resume and ID proof...</div>
+                    <div class="card-topic-labels">
+                        <span class="card-topic-label jobs">Jobs</span>
+                        <span class="card-topic-label important">Important</span>
+                    </div>
                     <div class="card-footer">
                         <span>May 12, 2025</span>
                         <span class="card-link">View Details</span>
@@ -1254,6 +1499,10 @@
                     <div class="card-label"><i class="fas fa-bus"></i> Ministry of Transport</div>
                     <div class="card-title">Road Closure for Bridge Repairs</div>
                     <div class="card-desc">The Hebbal flyover will be closed for repairs from May 20-25. Alternative routes have been arranged with additional buses during peak...</div>
+                    <div class="card-topic-labels">
+                        <span class="card-topic-label transport">Transport</span>
+                        <span class="card-topic-label important">Important</span>
+                    </div>
                     <div class="card-footer">
                         <span>May 10, 2025</span>
                         <span class="card-link">View Details</span>
@@ -1263,6 +1512,10 @@
                     <div class="card-label"><i class="fas fa-rupee-sign"></i> Ministry of Finance</div>
                     <div class="card-title">Deadline Extension for Tax Filing</div>
                     <div class="card-desc">The deadline for filing income tax returns has been extended to August 31st, 2025. No late fees will be charged for filings before this date.</div>
+                    <div class="card-topic-labels">
+                        <span class="card-topic-label finance">Finance</span>
+                        <span class="card-topic-label important">Important</span>
+                    </div>
                     <div class="card-footer">
                         <span>May 08, 2025</span>
                         <span class="card-link">View Details</span>
@@ -1272,6 +1525,10 @@
                     <div class="card-label"><i class="fas fa-heartbeat"></i> Ministry of Health</div>
                     <div class="card-title">Free COVID Booster Shots Available</div>
                     <div class="card-desc">Free COVID booster shots now available at all government hospitals and health centers for citizens above 18 years. No appointment...</div>
+                    <div class="card-topic-labels">
+                        <span class="card-topic-label health">Health</span>
+                        <span class="card-topic-label important">Important</span>
+                    </div>
                     <div class="card-footer">
                         <span>May 05, 2025</span>
                         <span class="card-link">View Details</span>
@@ -1286,6 +1543,63 @@
             </div>
         </section>
     </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section about-us">
+                <h4>About GovAnnounce</h4>
+                <p>GovAnnounce is the official portal for timely government announcements across India. Our mission is to empower citizens with easy access to public information.</p>
+            </div>
+            <div class="footer-section contact-info">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Government Headquarters, New Delhi, India</p>
+                <p><i class="fas fa-envelope"></i> info@govannounce.gov.in</p>
+                <p><i class="fas fa-phone-alt"></i> +91 11 1234 5678</p>
+            </div>
+            <div class="footer-section services">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Search Announcements</a></li>
+                    <li><a href="#">Filter Announcements</a></li>
+                    <li><a href="#">Saved News</a></li>
+                    <li><a href="#">Language Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-section departments">
+                <h4>Departments</h4>
+                <ul>
+                    <li><a href="#">Ministry of Education</a></li>
+                    <li><a href="#">Ministry of Health</a></li>
+                    <li><a href="#">Ministry of Finance</a></li>
+                    <li><a href="#">Ministry of Agriculture</a></li>
+                    <li><a href="#">View All</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social-legal">
+                <div class="social-media">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="legal-notices">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Accessibility Statement</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="sitemap-link"><a href="#">Site Map</a></div>
+            <div class="last-updated">Last Updated: May 18, 2024</div>
+            <div class="copyright">&copy; 2024 GovAnnounce. All rights reserved.</div>
+        </div>
+    </footer>
     <script>
     // Carousel functionality
     document.addEventListener('DOMContentLoaded', function() {
@@ -1312,6 +1626,32 @@
         dots.forEach((dot, i) => {
             dot.addEventListener('click', () => showSlide(i));
         });
+    });
+    // Horizontal scrolling for Continue Reading section
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.continue-reading-container');
+        const content = container.querySelector('.continue-reading-row');
+        const leftArrow = container.querySelector('.scroll-arrow.left');
+        const rightArrow = container.querySelector('.scroll-arrow.right');
+        const scrollAmount = 300; // Adjust scroll amount as needed
+
+        leftArrow.addEventListener('click', () => {
+            content.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        rightArrow.addEventListener('click', () => {
+            content.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        // Optional: Hide/show arrows based on scroll position
+        const updateArrowVisibility = () => {
+            leftArrow.style.display = content.scrollLeft > 0 ? 'flex' : 'none';
+            rightArrow.style.display = content.scrollLeft < content.scrollWidth - content.clientWidth ? 'flex' : 'none';
+        };
+
+        content.addEventListener('scroll', updateArrowVisibility);
+        // Initial check
+        updateArrowVisibility();
     });
     </script>
 </body>

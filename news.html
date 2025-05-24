@@ -117,6 +117,32 @@
             box-shadow: 0 2px 8px rgba(38,77,59,0.04);
             transition: box-shadow 0.2s;
         }
+        /* New style for Home button */
+        .home-button {
+            background: var(--white);
+            color: var(--primary-green);
+            border: 1px solid rgba(74, 123, 90, 0.2);
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.04);
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        .home-button i {
+            font-size: 1rem;
+        }
+        .home-button:hover {
+            background: var(--secondary-green);
+            color: #183324;
+            border-color: rgba(74, 123, 90, 0.3);
+            box-shadow: 0 4px 12px rgba(38,77,59,0.08);
+        }
         /* New style for Saved News button */
         .saved-news-btn {
             background: var(--white);
@@ -224,6 +250,12 @@
         .news-desc {
             font-size: 1.1rem;
             margin-bottom: 2rem;
+        }
+        .news-desc img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 2rem auto;
         }
         .audio-section {
             display: flex;
@@ -336,6 +368,118 @@
             .news-container { padding: 1rem 0.5rem 1.5rem 0.5rem; }
             .news-title { font-size: 1.1rem; }
         }
+        /* Footer Styles */
+        .site-footer {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 3rem 1.5rem 1.5rem 1.5rem;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section {
+            flex: 1 1 200px;
+        }
+        .footer-section h4 {
+            color: var(--secondary-green);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(195, 230, 203, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        .footer-section p, .footer-section li {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-section a:hover {
+            color: var(--secondary-green);
+            text-decoration: underline;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .contact-info p i {
+            margin-right: 0.5rem;
+            color: var(--secondary-green);
+        }
+        .social-media h4, .legal-notices h4 {
+            color: var(--secondary-green);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(195, 230, 203, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover {
+            color: var(--secondary-green);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(195, 230, 203, 0.3);
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            gap: 1rem;
+        }
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-bottom a:hover {
+            color: var(--secondary-green);
+            text-decoration: underline;
+        }
+        .sitemap-link, .last-updated, .copyright {
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-section {
+                flex: 1 1 auto;
+            }
+            .social-legal {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .sitemap-link, .last-updated, .copyright {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -349,6 +493,9 @@
                 </div>
             </div>
             <div class="header-actions">
+                <a href="index.html" class="home-button">
+                    <i class="fas fa-home"></i> Home
+                </a>
                 <select class="language-selector">
                     <option value="en">English</option>
                     <option value="hi">हिंदी</option>
@@ -477,5 +624,62 @@
             </div>
         </div>
     </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section about-us">
+                <h4>About GovAnnounce</h4>
+                <p>GovAnnounce is the official portal for timely government announcements across India. Our mission is to empower citizens with easy access to public information.</p>
+            </div>
+            <div class="footer-section contact-info">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Government Headquarters, New Delhi, India</p>
+                <p><i class="fas fa-envelope"></i> info@govannounce.gov.in</p>
+                <p><i class="fas fa-phone-alt"></i> +91 11 1234 5678</p>
+            </div>
+            <div class="footer-section services">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Search Announcements</a></li>
+                    <li><a href="#">Filter Announcements</a></li>
+                    <li><a href="#">Saved News</a></li>
+                    <li><a href="#">Language Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-section departments">
+                <h4>Departments</h4>
+                <ul>
+                    <li><a href="#">Ministry of Education</a></li>
+                    <li><a href="#">Ministry of Health</a></li>
+                    <li><a href="#">Ministry of Finance</a></li>
+                    <li><a href="#">Ministry of Agriculture</a></li>
+                    <li><a href="#">View All</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social-legal">
+                <div class="social-media">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="legal-notices">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Accessibility Statement</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="sitemap-link"><a href="#">Site Map</a></div>
+            <div class="last-updated">Last Updated: May 18, 2024</div>
+            <div class="copyright">&copy; 2024 GovAnnounce. All rights reserved.</div>
+        </div>
+    </footer>
 </body>
 </html> 
