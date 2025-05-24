@@ -40,11 +40,24 @@
             align-items: center;
             gap: 1.5rem;
         }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
         .logo-section {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             position: relative;
+        }
+        .logo-section > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .logo-section img {
+            display: none;
         }
         .dummy-logo {
             width: 40px;
@@ -64,6 +77,17 @@
         .dummy-logo i {
             font-size: 1.2rem;
         }
+        .flag-icon {
+            font-size: 1.7rem;
+            margin-left: -0.3rem;
+            margin-right: 0.2rem;
+            color: #ff9933;
+            animation: wave-flag 1.5s infinite linear alternate;
+        }
+        @keyframes wave-flag {
+            0% { transform: rotate(-10deg); }
+            100% { transform: rotate(10deg); }
+        }
         .main-title {
             font-size: 1.7rem;
             font-weight: 700;
@@ -72,6 +96,48 @@
             display: flex;
             align-items: center;
             margin-bottom: 0;
+        }
+        .header-tagline {
+            font-size: 1.01rem;
+            color: #3d5c47;
+            margin-top: 0;
+            margin-left: 0.2rem;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            line-height: 1;
+            margin-bottom: 0;
+        }
+        .language-selector {
+            background: var(--card-bg);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
+            color: var(--primary-green);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.04);
+            transition: box-shadow 0.2s;
+        }
+        /* New style for Saved News button */
+        .saved-news-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.08);
+            transition: background 0.2s;
+        }
+        .saved-news-btn i {
+            font-size: 1.1rem;
+        }
+        .saved-news-btn:hover {
+            background: #386641; /* Darker shade on hover */
         }
         .news-container {
             max-width: 700px;
@@ -86,13 +152,42 @@
         .news-title {
             font-size: 1.7rem;
             font-weight: 700;
-            color: var(--primary-green);
+            color: var(--text-light);
             margin-bottom: 0.7rem;
         }
         .news-meta {
             color: var(--text-light);
             font-size: 1rem;
             margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .news-meta span,
+        .news-meta button {
+             flex-shrink: 0;
+        }
+        .news-meta .read-time {
+             display: flex;
+             align-items: center;
+             gap: 0.3rem;
+             color: var(--primary-green);
+        }
+        .news-meta .read-time i {
+             color: var(--primary-green);
+        }
+        .news-meta .summarize-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .news-meta .summarize-btn:hover {
+            background: #386641;
         }
         .news-ministry {
             color: var(--primary-green);
@@ -156,8 +251,21 @@
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Emblem_of_India.svg/1200px-Emblem_of_India.svg.png" alt="Government Logo">
+                <div class="dummy-logo"><i class="fas fa-landmark"></i></div>
+                <div>
                 <h1 class="main-title">GovAnnounce</h1>
+                    <p class="header-tagline">Empowering Citizens with Timely Information</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <select class="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="mr">मराठी</option>
+                </select>
+                <button class="saved-news-btn">
+                    <i class="fas fa-bookmark"></i> Saved News
+                </button>
             </div>
         </div>
     </header>
@@ -165,7 +273,11 @@
         <div class="news-container">
             <span class="save-icon-news" title="Save this news"><i class="fas fa-bookmark"></i></span>
             <div class="news-title">New Education Scholarship for Rural Students</div>
-            <div class="news-meta"><span class="news-ministry">Ministry of Education</span> &nbsp;|&nbsp; May 15, 2025</div>
+            <div class="news-meta">
+                <span class="news-ministry">Ministry of Education</span> &nbsp;|&nbsp; May 15, 2025
+                <span class="read-time"><i class="fas fa-clock"></i> 3 min read</span>
+                <button class="summarize-btn">Summarize</button>
+            </div>
             <div class="news-desc">
                 Students from rural areas can now apply for a new scholarship program that covers tuition fees and provides a monthly stipend. Applications are open until June 30, 2025. The initiative aims to support underprivileged students and promote higher education in rural India.
             </div>
