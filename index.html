@@ -69,6 +69,9 @@
             box-shadow: 0 2px 8px rgba(38,77,59,0.08);
             border: 2px solid #fff;
         }
+        .dummy-logo i {
+            font-size: 1.2rem;
+        }
         .flag-icon {
             font-size: 1.7rem;
             margin-left: -0.3rem;
@@ -657,7 +660,7 @@
             background: #fff;
             border-radius: 14px;
             box-shadow: 0 2px 8px rgba(38,77,59,0.07);
-            padding: 1.2rem 1rem 1.3rem 1rem;
+            padding: 0;
             display: flex;
             flex-direction: column;
             min-width: 0;
@@ -665,24 +668,45 @@
             text-decoration: none;
             color: inherit;
             transition: box-shadow 0.2s, transform 0.2s;
+            overflow: hidden;
         }
         .recently-added-card:hover {
             box-shadow: 0 6px 24px rgba(38,77,59,0.13);
             transform: translateY(-2px) scale(1.03);
         }
+        .news-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .recently-added-card:hover .news-image img {
+            transform: scale(1.1);
+        }
         .recently-added-card .card-label {
-            margin-bottom: 0.5rem;
+            margin: 1rem 1rem 0.5rem 1rem;
         }
         .recently-added-card .card-title {
             font-size: 1.08rem;
             font-weight: 500;
             color: var(--primary-green);
-            margin-bottom: 0.3rem;
+            margin: 0 1rem 0.3rem 1rem;
         }
         .recently-added-card .card-ministry {
             color: var(--text-light);
             font-size: 1.01rem;
-            margin-bottom: 0.5rem;
+            margin: 0 1rem 0.5rem 1rem;
+        }
+        .recently-added-card .recently-added-date {
+            font-size: 0.97rem;
+            color: var(--text-light);
+            margin: 0 1rem 0.5rem 1rem;
         }
         .recently-added-card .card-link {
             color: var(--primary-green);
@@ -690,15 +714,7 @@
             text-decoration: none;
             font-size: 1.01rem;
             transition: color 0.2s;
-        }
-        .recently-added-card .card-link:hover {
-            text-decoration: underline;
-            color: #183324;
-        }
-        .recently-added-card .recently-added-date {
-            font-size: 0.97rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
+            margin: 0 1rem 1rem 1rem;
         }
         /* Continue Reading Section */
         .continue-reading-section {
@@ -773,27 +789,162 @@
             background: #183324;
             transform: translateY(-2px) scale(1.04);
         }
+        /* Carousel Styles */
+        .news-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 420px;
+            margin: 0 auto 2.5rem auto;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(38,77,59,0.13);
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-slide {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+            display: flex;
+            align-items: flex-end;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .carousel-overlay {
+            background: linear-gradient(0deg, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.1) 100%);
+            color: #fff;
+            padding: 2rem 2rem 1.5rem 2rem;
+            width: 100%;
+            border-radius: 0 0 18px 18px;
+        }
+        .carousel-source {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 0.3rem;
+        }
+        .carousel-headline {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .carousel-summary {
+            font-size: 1.08rem;
+            font-weight: 400;
+            opacity: 0.95;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 1.7rem;
+            cursor: pointer;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .carousel-arrow.left { left: 16px; }
+        .carousel-arrow.right { right: 16px; }
+        .carousel-arrow:hover { background: rgba(38,77,59,0.7); }
+        .carousel-dots {
+            position: absolute;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 4;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.2s, background 0.2s;
+        }
+        .dot.active {
+            opacity: 1;
+            background: var(--primary-green);
+        }
+        @media (max-width: 700px) {
+            .news-carousel {
+                max-width: 98vw;
+                height: 260px;
+            }
+            .carousel-overlay {
+                padding: 1rem 0.7rem 0.7rem 0.7rem;
+            }
+            .carousel-headline {
+                font-size: 1rem;
+            }
+            .carousel-summary {
+                font-size: 0.95rem;
+            }
+        }
+        .saved-news-btn {
+            background: var(--primary-green);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 1.3rem;
+            font-size: 1.08rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.04);
+        }
+        .saved-news-btn:hover {
+            background: #183324;
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <span class="dummy-logo">LOGO</span>
+                <div class="dummy-logo">
+                    <i class="fas fa-landmark"></i>
+                </div>
                 <div>
-                <h1 class="main-title">GovAnnounce</h1>
-                  <div class="header-tagline">Empowering Citizens with Timely Information</div>
+                    <h1 class="main-title">GovAnnounce</h1>
+                    <div class="header-tagline">Empowering Citizens with Timely Information</div>
                 </div>
             </div>
             <div class="header-actions">
-            <select class="language-selector">
-                <option value="en">English</option>
-                <option value="hi">हिंदी</option>
-                <option value="ta">தமிழ்</option>
-                <option value="te">తెలుగు</option>
-                <option value="bn">বাংলা</option>
-            </select>
-                <span class="save-icon" title="Saved Articles"><i class="fas fa-bookmark"></i></span>
+                <select class="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="bn">বাংলা</option>
+                </select>
+                <button class="saved-news-btn" title="View Saved News"><i class="fas fa-bookmark"></i> Saved News</button>
             </div>
         </div>
     </header>
@@ -866,38 +1017,36 @@
                 <input type="date" class="filter-date-picker" placeholder="Choose date" />
             </div>
         </section>
-        <section class="recently-added-section">
-            <div class="recently-added-title">Recently Added</div>
-            <div class="recently-added-desc">Latest government announcements</div>
-            <div class="recently-added-row">
-                <a class="recently-added-card" href="news.html?id=1">
-                    <div class="card-label"><i class="fas fa-graduation-cap"></i> Education</div>
-                    <div class="card-title">New Education Scholarship for Rural Students</div>
-                    <div class="card-ministry">Ministry of Education</div>
-                    <div class="recently-added-date">May 15, 2025</div>
-                    <span class="card-link">Read more</span>
-                </a>
-                <a class="recently-added-card" href="news.html?id=2">
-                    <div class="card-label"><i class="fas fa-heartbeat"></i> Health</div>
-                    <div class="card-title">Healthcare Centers Extended Hours</div>
-                    <div class="card-ministry">Ministry of Health</div>
-                    <div class="recently-added-date">May 14, 2025</div>
-                    <span class="card-link">Read more</span>
-                </a>
-                <a class="recently-added-card" href="news.html?id=3">
-                    <div class="card-label"><i class="fas fa-briefcase"></i> Jobs</div>
-                    <div class="card-title">New Job Fair in Chennai and Mumbai</div>
-                    <div class="card-ministry">Ministry of Labor and Employment</div>
-                    <div class="recently-added-date">May 12, 2025</div>
-                    <span class="card-link">Read more</span>
-                </a>
-                <a class="recently-added-card" href="news.html?id=4">
-                    <div class="card-label"><i class="fas fa-bus"></i> Transport</div>
-                    <div class="card-title">Road Closure for Bridge Repairs</div>
-                    <div class="card-ministry">Ministry of Transport</div>
-                    <div class="recently-added-date">May 10, 2025</div>
-                    <span class="card-link">Read more</span>
-                </a>
+        <section class="recently-added-section" style="padding:0; background:none; box-shadow:none; border-radius:0; margin-bottom:0;">
+            <div class="news-carousel">
+                <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80');">
+                    <div class="carousel-overlay">
+                        <div class="carousel-source">gov.in</div>
+                        <div class="carousel-headline">New Education Scholarship for Rural Students</div>
+                        <div class="carousel-summary">A new government initiative offers scholarships to rural students for higher education in 2025.</div>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80');">
+                    <div class="carousel-overlay">
+                        <div class="carousel-source">gov.in</div>
+                        <div class="carousel-headline">Healthcare Centers Extended Hours</div>
+                        <div class="carousel-summary">All government healthcare centers will now operate from 8AM to 10PM every day to improve accessibility.</div>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80');">
+                    <div class="carousel-overlay">
+                        <div class="carousel-source">gov.in</div>
+                        <div class="carousel-headline">New Job Fair in Chennai and Mumbai</div>
+                        <div class="carousel-summary">Job fairs will be held in Chennai and Mumbai to connect job seekers with employers. Bring your resume and ID proof.</div>
+                    </div>
+                </div>
+                <button class="carousel-arrow left" aria-label="Previous news">&#10094;</button>
+                <button class="carousel-arrow right" aria-label="Next news">&#10095;</button>
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
             </div>
         </section>
         <section class="continue-reading-section">
@@ -999,5 +1148,33 @@
             </div>
         </div>
     </main>
+    <script>
+    // Carousel functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const leftArrow = document.querySelector('.carousel-arrow.left');
+        const rightArrow = document.querySelector('.carousel-arrow.right');
+        let current = 0;
+        function showSlide(idx) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === idx);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === idx);
+            });
+            current = idx;
+        }
+        leftArrow.addEventListener('click', () => {
+            showSlide((current - 1 + slides.length) % slides.length);
+        });
+        rightArrow.addEventListener('click', () => {
+            showSlide((current + 1) % slides.length);
+        });
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => showSlide(i));
+        });
+    });
+    </script>
 </body>
 </html>
