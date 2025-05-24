@@ -794,7 +794,7 @@
             position: relative;
             width: 100%;
             max-width: 900px;
-            height: 420px;
+            height: 100%;
             margin: 0 auto 2.5rem auto;
             border-radius: 18px;
             overflow: hidden;
@@ -803,10 +803,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 520px;
         }
         .carousel-slide {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             background-size: cover;
@@ -815,6 +816,7 @@
             transition: opacity 0.5s;
             display: flex;
             align-items: flex-end;
+            min-height: 520px;
         }
         .carousel-slide.active {
             opacity: 1;
@@ -825,7 +827,12 @@
             color: #fff;
             padding: 2rem 2rem 1.5rem 2rem;
             width: 100%;
+            height: 100%;
             border-radius: 0 0 18px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 520px;
         }
         .carousel-source {
             font-size: 0.95rem;
@@ -921,6 +928,122 @@
             background: #183324;
             color: #fff;
             transform: translateY(-2px) scale(1.04);
+        }
+        .news-carousel-row {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 1200px;
+            margin: 0 auto 2.5rem auto;
+            align-items: stretch;
+            justify-content: center;
+            min-height: 520px;
+        }
+        .card-style {
+            background: var(--card-bg);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(38,77,59,0.07);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            min-height: 520px;
+        }
+        .news-carousel.card-style {
+            flex: 2 1 0;
+            min-width: 0;
+            padding: 2rem 1.5rem 2rem 2.5rem;
+            height: 100%;
+            min-height: 520px;
+        }
+        .top-stories.card-style {
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 2rem 2.5rem 2rem 1.5rem;
+            margin-left: 0;
+        }
+        .top-stories-title {
+            font-size: 1.18rem;
+            font-weight: 700;
+            margin-bottom: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-green);
+        }
+        .top-stories-title i {
+            color: var(--primary-green);
+            font-size: 1.3rem;
+        }
+        .top-story {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.3rem;
+        }
+        .top-story-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.08);
+        }
+        .top-story-content {
+            flex: 1;
+        }
+        .top-story-source {
+            font-size: 1.01rem;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+            font-weight: 500;
+        }
+        .top-story-headline {
+            font-size: 1.13rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.3;
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 320px;
+        }
+        .top-stories-footer {
+            margin-top: 0.7rem;
+            text-align: right;
+        }
+        .top-stories-more {
+            color: var(--primary-green);
+            font-size: 1.08rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .top-stories-more:hover {
+            text-decoration: underline;
+        }
+        .news-carousel-row > .top-stories {
+            border-left: 2px solid #e0e0e0;
+            margin-left: 0.5rem;
+        }
+        @media (max-width: 1100px) {
+            .news-carousel-row {
+                gap: 0.5rem;
+            }
+            .news-carousel-row > .top-stories {
+                margin-left: 0.5rem;
+            }
+        }
+        @media (max-width: 900px) {
+            .news-carousel-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .news-carousel-row > .top-stories {
+                border-left: none;
+                margin-left: 0;
+                border-top: 2px solid #e0e0e0;
+                margin-top: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -1018,34 +1141,61 @@
             </div>
         </section>
         <section class="recently-added-section" style="padding:0; background:none; box-shadow:none; border-radius:0; margin-bottom:0;">
-            <div class="news-carousel">
-                <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80');">
-                    <div class="carousel-overlay">
-                        <div class="carousel-source">gov.in</div>
-                        <div class="carousel-headline">New Education Scholarship for Rural Students</div>
-                        <div class="carousel-summary">A new government initiative offers scholarships to rural students for higher education in 2025.</div>
+            <div class="news-carousel-row">
+                <div class="news-carousel card-style">
+                    <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80');">
+                        <div class="carousel-overlay">
+                            <div class="carousel-source">gov.in</div>
+                            <div class="carousel-headline">New Education Scholarship for Rural Students</div>
+                            <div class="carousel-summary">A new government initiative offers scholarships to rural students for higher education in 2025.</div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80');">
+                        <div class="carousel-overlay">
+                            <div class="carousel-source">gov.in</div>
+                            <div class="carousel-headline">Healthcare Centers Extended Hours</div>
+                            <div class="carousel-summary">All government healthcare centers will now operate from 8AM to 10PM every day to improve accessibility.</div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80');">
+                        <div class="carousel-overlay">
+                            <div class="carousel-source">gov.in</div>
+                            <div class="carousel-headline">New Job Fair in Chennai and Mumbai</div>
+                            <div class="carousel-summary">Job fairs will be held in Chennai and Mumbai to connect job seekers with employers. Bring your resume and ID proof.</div>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow left" aria-label="Previous news">&#10094;</button>
+                    <button class="carousel-arrow right" aria-label="Next news">&#10095;</button>
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                     </div>
                 </div>
-                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80');">
-                    <div class="carousel-overlay">
-                        <div class="carousel-source">gov.in</div>
-                        <div class="carousel-headline">Healthcare Centers Extended Hours</div>
-                        <div class="carousel-summary">All government healthcare centers will now operate from 8AM to 10PM every day to improve accessibility.</div>
+                <div class="top-stories card-style">
+                    <div class="top-stories-title"><i class="fas fa-fire"></i> Top stories</div>
+                    <div class="top-story">
+                        <img class="top-story-logo" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Sports Tak">
+                        <div class="top-story-content">
+                            <div class="top-story-source">Sports Tak · 4h</div>
+                            <div class="top-story-headline">Suspense ends over captaincy as BCCI announces India's squad for five-Test...</div>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80');">
-                    <div class="carousel-overlay">
-                        <div class="carousel-source">gov.in</div>
-                        <div class="carousel-headline">New Job Fair in Chennai and Mumbai</div>
-                        <div class="carousel-summary">Job fairs will be held in Chennai and Mumbai to connect job seekers with employers. Bring your resume and ID proof.</div>
+                    <div class="top-story">
+                        <img class="top-story-logo" src="https://randomuser.me/api/portraits/women/44.jpg" alt="News18">
+                        <div class="top-story-content">
+                            <div class="top-story-source">News18 · 2h</div>
+                            <div class="top-story-headline">Jasprit Bumrah Will Not Play All Five Tests Against England, Agarkar Confirms</div>
+                        </div>
                     </div>
-                </div>
-                <button class="carousel-arrow left" aria-label="Previous news">&#10094;</button>
-                <button class="carousel-arrow right" aria-label="Next news">&#10095;</button>
-                <div class="carousel-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    <div class="top-story">
+                        <img class="top-story-logo" src="https://randomuser.me/api/portraits/men/65.jpg" alt="The Times of India">
+                        <div class="top-story-content">
+                            <div class="top-story-source">The Times of India · 2h</div>
+                            <div class="top-story-headline">Gujarat ATS arrests man for sharing sensitive info with Pakistani spy</div>
+                        </div>
+                    </div>
+                    <div class="top-stories-footer"><a href="#" class="top-stories-more">See more</a></div>
                 </div>
             </div>
         </section>
@@ -1135,18 +1285,6 @@
                 <button class="pagination-btn">Next &gt;</button>
             </div>
         </section>
-        <!-- Featured Announcement Example -->
-        <div class="featured-announcement">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Announcement" class="featured-img" />
-            <div class="featured-overlay-text">
-                Government Launches New Digital Initiative
-            </div>
-            <div class="featured-bottom-info">
-                <div class="headline">Digital India 2.0</div>
-                <div class="subheadline">Empowering citizens with next-gen e-services</div>
-                <div class="date">May 20, 2025</div>
-            </div>
-        </div>
     </main>
     <script>
     // Carousel functionality
