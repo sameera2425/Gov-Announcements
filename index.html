@@ -773,6 +773,89 @@
             background: #183324;
             transform: translateY(-2px) scale(1.04);
         }
+        .scrolling-image-section {
+            width: 100%;
+            margin: 2rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .scrolling-image-container {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        .scrolling-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: scrollImage 30s linear infinite;
+        }
+        @keyframes scrollImage {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .scrolling-image-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+        .scrolling-image-info {
+            max-width: 600px;
+        }
+        .scrolling-image-category {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.15);
+        }
+        .scrolling-image-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .scrolling-image-subtitle {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .scrolling-image-date {
+            font-size: 1.1rem;
+            color: var(--white);
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            .scrolling-image-container {
+                height: 400px;
+            }
+            .scrolling-image-title {
+                font-size: 2rem;
+            }
+            .scrolling-image-subtitle {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -917,6 +1000,19 @@
                     <div class="cr-title">Upcoming Job Fairs in Your City</div>
                     <div class="cr-desc">Find out when and where the next government-sponsored job fairs are happening near you.</div>
                     <button class="cr-btn">Continue</button>
+                </div>
+            </div>
+        </section>
+        <section class="scrolling-image-section">
+            <div class="scrolling-image-container">
+                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1200&q=80" alt="Government Initiative" class="scrolling-image">
+                <div class="scrolling-image-content">
+                    <div class="scrolling-image-info">
+                        <div class="scrolling-image-category"><i class="fas fa-graduation-cap"></i> Education</div>
+                        <h2 class="scrolling-image-title">Digital India Education Initiative</h2>
+                        <p class="scrolling-image-subtitle">Transforming education through technology and innovation</p>
+                        <div class="scrolling-image-date">May 20, 2025</div>
+                    </div>
                 </div>
             </div>
         </section>
