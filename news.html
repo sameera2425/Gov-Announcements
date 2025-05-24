@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Details - GovAnnounce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #264D3B;
+            --card-bg: #f7f9fb;
+            --white: #ffffff;
+            --text-dark: #222;
+            --text-light: #555;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 0;
+        }
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-section img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-green);
+            background: var(--white);
+        }
+        .main-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 0.5px;
+        }
+        .news-container {
+            max-width: 700px;
+            margin: 2.5rem auto;
+            background: var(--card-bg);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem 1.5rem 2.5rem 1.5rem;
+        }
+        .news-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 0.7rem;
+        }
+        .news-meta {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .news-ministry {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        .news-desc {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .audio-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .audio-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .audio-btn:hover {
+            background: #183324;
+        }
+        .audio-label {
+            color: var(--primary-green);
+            font-weight: 500;
+        }
+        @media (max-width: 700px) {
+            .news-container { padding: 1rem 0.5rem 1.5rem 0.5rem; }
+            .news-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Emblem_of_India.svg/1200px-Emblem_of_India.svg.png" alt="Government Logo">
+                <h1 class="main-title">GovAnnounce</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="news-container">
+            <div class="news-title">New Education Scholarship for Rural Students</div>
+            <div class="news-meta"><span class="news-ministry">Ministry of Education</span> &nbsp;|&nbsp; May 15, 2025</div>
+            <div class="news-desc">
+                Students from rural areas can now apply for a new scholarship program that covers tuition fees and provides a monthly stipend. Applications are open until June 30, 2025. The initiative aims to support underprivileged students and promote higher education in rural India.
+            </div>
+            <div class="audio-section">
+                <button class="audio-btn"><i class="fas fa-volume-up"></i></button>
+                <span class="audio-label">Listen to this announcement</span>
+            </div>
+            <div>
+                <strong>Eligibility:</strong> Students from rural backgrounds currently enrolled in recognized schools.<br>
+                <strong>How to Apply:</strong> Visit the official government portal and fill out the online application form.<br>
+                <strong>Contact:</strong> For more information, contact your district education office.
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
