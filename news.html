@@ -29,7 +29,7 @@
         .header {
             background: var(--white);
             border-bottom: 1px solid #e0e0e0;
-            padding: 0.5rem 0 0.3rem 0;
+            padding: 0.25rem 0 0.15rem 0;
             box-shadow: 0 2px 8px rgba(38,77,59,0.04);
         }
         .header-content {
@@ -39,6 +39,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 1.5rem;
+            padding: 0.2rem 0;
         }
         .header-actions {
             display: flex;
@@ -60,8 +61,8 @@
             display: none;
         }
         .dummy-logo {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: var(--primary-green);
             color: #fff;
@@ -69,7 +70,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-right: 0.3rem;
             box-shadow: 0 2px 8px rgba(38,77,59,0.08);
             border: 2px solid #fff;
@@ -89,7 +90,7 @@
             100% { transform: rotate(10deg); }
         }
         .main-title {
-            font-size: 1.7rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary-green);
             letter-spacing: 0.5px;
@@ -98,24 +99,85 @@
             margin-bottom: 0;
         }
         .header-tagline {
-            font-size: 1.01rem;
+            font-size: 0.92rem;
             color: #3d5c47;
             margin-top: 0;
             margin-left: 0.2rem;
             font-weight: 400;
             letter-spacing: 0.2px;
             line-height: 1;
-            margin-bottom: 0;
+            margin-bottom: 1.2rem;
         }
         .language-selector {
-            background: var(--card-bg);
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 0.5rem 1.2rem;
+            background: var(--white);
             color: var(--primary-green);
+            border: 1px solid rgba(74, 123, 90, 0.18);
+            border-radius: 8px;
+            padding: 0.32rem 1rem;
+            font-size: 0.97rem;
             font-weight: 500;
-            box-shadow: 0 2px 8px rgba(38,77,59,0.04);
-            transition: box-shadow 0.2s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.06);
+            transition: all 0.2s ease;
+            position: relative;
+            min-width: unset;
+            user-select: none;
+            height: 2.2rem;
+            margin-top: 0.25rem;
+        }
+        .language-selector .fa-globe {
+            font-size: 1rem;
+        }
+        .language-selector .dropdown-arrow {
+            margin-left: 0.1rem;
+            font-size: 0.95rem;
+            color: var(--primary-green);
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .language-selector.open .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        .language-selector i {
+            font-size: 1rem;
+        }
+        .language-dropdown {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: var(--white);
+            border: 1px solid rgba(74, 123, 90, 0.2);
+            border-radius: 8px;
+            margin-top: 0.2rem;
+            min-width: 150px;
+            box-shadow: 0 4px 12px rgba(38,77,59,0.1);
+            display: none;
+            z-index: 1000;
+        }
+        .language-selector.open .language-dropdown {
+            display: block;
+        }
+        .language-option {
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .language-option:hover, .language-option.active {
+            background: var(--secondary-green);
+            color: #183324;
+            font-weight: 500;
+        }
+        .language-option i {
+            font-size: 1rem;
         }
         /* New style for Home button */
         .home-button {
@@ -186,6 +248,13 @@
             padding: 2rem 2.5rem 2.5rem 2.5rem;
             position: relative;
         }
+        .news-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 0.7rem;
+        }
         .news-title {
             font-size: 1.7rem;
             font-weight: 700;
@@ -208,7 +277,7 @@
         }
         .meta-bottom {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 1rem;
         }
         .news-ministry {
@@ -229,23 +298,31 @@
             font-size: 0.9rem;
         }
         .summarize-btn {
-            background: none;
+            background: linear-gradient(90deg, #4A7B5A 0%, #6fcf97 100%);
+            color: #fff;
             border: none;
-            color: var(--primary-green);
-            font-size: 0.9rem;
+            border-radius: 16px;
+            padding: 0.38rem 1rem;
+            font-size: 0.93rem;
+            font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            transition: background-color 0.2s;
-        }
-        .summarize-btn:hover {
-            background-color: var(--secondary-green);
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.10);
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            letter-spacing: 0.2px;
+            outline: none;
         }
         .summarize-btn i {
-            font-size: 0.9rem;
+            font-size: 0.98rem;
+            color: #fff;
+            transition: color 0.2s;
+        }
+        .summarize-btn:hover, .summarize-btn:focus {
+            background: linear-gradient(90deg, #3a5d47 0%, #4A7B5A 100%);
+            box-shadow: 0 4px 16px rgba(38,77,59,0.15);
+            transform: translateY(-2px) scale(1.03);
         }
         .news-desc {
             font-size: 1.1rem;
@@ -480,6 +557,157 @@
                 margin-bottom: 0.5rem;
             }
         }
+        .simplify-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .simplify-btn {
+            background: var(--white);
+            color: var(--primary-green);
+            border: 1px solid rgba(74, 123, 90, 0.2);
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.04);
+            transition: all 0.2s ease;
+        }
+        .simplify-btn i {
+            font-size: 1rem;
+        }
+        .simplify-btn:hover {
+            background: var(--secondary-green);
+            color: #183324;
+            border-color: rgba(74, 123, 90, 0.3);
+            box-shadow: 0 4px 12px rgba(38,77,59,0.08);
+        }
+        .summary-box {
+            width: 100%;
+            margin: 1.5rem 0;
+            padding: 2rem 2.2rem 2.2rem 2.2rem;
+            background: linear-gradient(120deg, #f7fafc 60%, #eaf3ee 100%);
+            border: 1.5px solid #e0e7ef;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(38,77,59,0.08);
+            font-style: normal;
+            position: relative;
+            line-height: 1.7;
+            font-size: 1.05em;
+            animation: fadeInSummary 0.7s ease;
+        }
+        @keyframes fadeInSummary {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .summary-box-header {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1.1rem;
+        }
+        .summary-box-header i {
+            color: #4A7B5A;
+            font-size: 1.4rem;
+        }
+        .summary-box h4 {
+            margin: 0;
+            color: #29543a;
+            font-size: 1.22rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+        .summary-divider {
+            border: none;
+            border-top: 1.5px dashed #b7c9b7;
+            margin: 0 0 1.3rem 0;
+        }
+        .summary-box ul {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+        .summary-box li {
+            margin-bottom: 1.1rem;
+            font-size: 1.07rem;
+            color: #2c3e2d;
+            position: relative;
+            padding-left: 2.1rem;
+            line-height: 1.7;
+            background: none;
+        }
+        .summary-box li:last-child {
+            margin-bottom: 0;
+        }
+        .summary-box li::before {
+            content: '\f058'; /* FontAwesome check-circle */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            font-size: 1.15rem;
+            color: #4A7B5A;
+            background: none;
+        }
+        @media (max-width: 768px) {
+            .summary-box {
+                padding: 1.2rem 0.7rem 1.5rem 0.7rem;
+                font-size: 0.98em;
+                border-radius: 10px;
+            }
+            .summary-box-header i {
+                font-size: 1.1rem;
+            }
+            .summary-box h4 {
+                font-size: 1.05rem;
+            }
+            .summary-box li {
+                font-size: 0.98rem;
+                padding-left: 1.5rem;
+            }
+            .summary-box li::before {
+                font-size: 1rem;
+            }
+        }
+        .simplify-toggle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-top: 0.7rem;
+            margin-bottom: 1.2rem;
+        }
+        .simplify-segmented {
+            display: flex;
+            border: 1.5px solid #4A7B5A;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(38,77,59,0.04);
+        }
+        .simplify-segment {
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #4A7B5A;
+            background: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .simplify-segment.selected {
+            background: #eaf3ee;
+            color: #29543a;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(38,77,59,0.06);
+        }
+        .simplify-segment:not(:last-child) {
+            border-right: 1.5px solid #4A7B5A;
+        }
     </style>
 </head>
 <body>
@@ -496,25 +724,34 @@
                 <a href="index.html" class="home-button">
                     <i class="fas fa-home"></i> Home
                 </a>
-                <select class="language-selector">
-                    <option value="en">English</option>
-                    <option value="hi">हिंदी</option>
-                    <option value="mr">मराठी</option>
-                </select>
-                <button class="saved-news-btn">
-                    <i class="far fa-bookmark"></i> Saved News
-                </button>
             </div>
         </div>
     </header>
     <main>
         <div class="main-content-wrapper">
             <div class="news-container">
-                <span class="save-icon-news" title="Save this news">
-                    <i class="far fa-bookmark"></i>
-                    Save
-                </span>
-                <div class="news-title">New Education Scholarship for Rural Students</div>
+                <div class="news-title-row">
+                    <div class="news-title">New Education Scholarship for Rural Students</div>
+                    <span class="save-icon-news language-selector" id="languageSelector" title="Select Language">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLanguage">English</span>
+                        <span class="dropdown-arrow"><i class="fas fa-chevron-down"></i></span>
+                        <div class="language-dropdown">
+                            <div class="language-option active" data-lang="en">
+                                <i class="fas fa-check"></i>
+                                English
+                            </div>
+                            <div class="language-option" data-lang="hi">
+                                <i class="fas fa-check" style="visibility: hidden;"></i>
+                                हिंदी
+                            </div>
+                            <div class="language-option" data-lang="mr">
+                                <i class="fas fa-check" style="visibility: hidden;"></i>
+                                मराठी
+                            </div>
+                        </div>
+                    </span>
+                </div>
                 <div class="news-meta">
                     <div class="meta-top">
                         <span class="news-ministry">Ministry of Education</span>
@@ -525,10 +762,16 @@
                             <i class="far fa-clock"></i>
                             3 min read
                         </span>
-                        <button class="summarize-btn">
-                            <i class="fas fa-file-alt"></i>
+                        <button class="summarize-btn" id="summarize-btn">
+                            <i class="fas fa-wand-sparkles"></i>
                             Summarize
                         </button>
+                        <div class="simplify-toggle-wrapper">
+                            <div class="simplify-segmented">
+                                <button type="button" class="simplify-segment selected" id="btn-simplified">Simplified</button>
+                                <button type="button" class="simplify-segment" id="btn-oversimplified">Over-simplified</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="meta-bottom">
                         <div class="audio-section">
@@ -592,33 +835,41 @@
                 <div class="suggested-card">
                     <div class="suggested-card-title">New Healthcare Initiative for Rural Areas</div>
                     <div class="suggested-card-meta">
+                        <i class="far fa-calendar"></i> May 12, 2025
+                        <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
                         <i class="far fa-clock"></i> 4 min read
                         <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
-                        <span>Ministry of Health</span>
+                        <i class="fas fa-hospital"></i> Ministry of Health
                     </div>
                 </div>
                 <div class="suggested-card">
                     <div class="suggested-card-title">Digital Literacy Program for Senior Citizens</div>
                     <div class="suggested-card-meta">
+                        <i class="far fa-calendar"></i> May 10, 2025
+                        <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
                         <i class="far fa-clock"></i> 3 min read
                         <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
-                        <span>Ministry of IT</span>
+                        <i class="fas fa-laptop"></i> Ministry of IT
                     </div>
                 </div>
                 <div class="suggested-card">
                     <div class="suggested-card-title">Agricultural Subsidy Updates for 2025</div>
                     <div class="suggested-card-meta">
+                        <i class="far fa-calendar"></i> May 8, 2025
+                        <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
                         <i class="far fa-clock"></i> 5 min read
                         <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
-                        <span>Ministry of Agriculture</span>
+                        <i class="fas fa-seedling"></i> Ministry of Agriculture
                     </div>
                 </div>
                 <div class="suggested-card">
                     <div class="suggested-card-title">New Infrastructure Development Projects</div>
                     <div class="suggested-card-meta">
+                        <i class="far fa-calendar"></i> May 5, 2025
+                        <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
                         <i class="far fa-clock"></i> 4 min read
                         <i class="fas fa-circle" style="font-size: 0.3rem;"></i>
-                        <span>Ministry of Infrastructure</span>
+                        <i class="fas fa-building"></i> Ministry of Infrastructure
                     </div>
                 </div>
             </div>
@@ -682,4 +933,55 @@
         </div>
     </footer>
 </body>
+<script src="script.js"></script>
+<script>
+// Language selector interactivity
+const languageSelector = document.getElementById('languageSelector');
+const currentLanguage = document.getElementById('currentLanguage');
+const options = languageSelector.querySelectorAll('.language-option');
+
+languageSelector.addEventListener('click', function(e) {
+    // Only toggle if not clicking an option
+    if (!e.target.classList.contains('language-option') && !e.target.closest('.language-option')) {
+        languageSelector.classList.toggle('open');
+    }
+});
+
+document.addEventListener('click', function(e) {
+    if (!languageSelector.contains(e.target)) {
+        languageSelector.classList.remove('open');
+    }
+});
+
+options.forEach(option => {
+    option.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Remove active from all
+        options.forEach(opt => {
+            opt.classList.remove('active');
+            opt.querySelector('i').style.visibility = 'hidden';
+        });
+        // Set active
+        this.classList.add('active');
+        this.querySelector('i').style.visibility = 'visible';
+        // Update button text
+        currentLanguage.textContent = this.textContent.trim();
+        languageSelector.classList.remove('open');
+        // Here you can add logic to actually change the language of the content
+    });
+});
+
+// Segmented control interactivity
+const btnSimplified = document.getElementById('btn-simplified');
+const btnOversimplified = document.getElementById('btn-oversimplified');
+
+btnSimplified.addEventListener('click', function() {
+    btnSimplified.classList.add('selected');
+    btnOversimplified.classList.remove('selected');
+});
+btnOversimplified.addEventListener('click', function() {
+    btnOversimplified.classList.add('selected');
+    btnSimplified.classList.remove('selected');
+});
+</script>
 </html> 
